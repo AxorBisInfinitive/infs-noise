@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "infs-noise",
+  "version": "${version}",
+  "name": "Inf's Noise",
+  "description": "Registers terrain systems for Inf's Farlands.",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.inf.noise.InfsNoise"]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "${minecraft_version}",
+    "java": ">=25",
+    "infs-farlands": "=${farlands_version}"
+  }
+}

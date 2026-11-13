@@ -1,0 +1,41 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+repositories {
+	maven {
+		name = 'Farlands'
+		url = 'https://axorbisinfinitive.github.io/infs-farlands/maven/'
+		content {
+			includeModule 'com.inf.farlands', 'infs-farlands'
+		}
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${loader_version}"
+	implementation "com.inf.farlands:infs-farlands:${farlands_version}"
+}
+
+processResources {
+	def versions = [
+		version: project.version.toString(),
+		minecraft_version: project.minecraft_version,
+		loader_version: project.loader_version,
+		farlands_version: project.farlands_version
+	]
+	inputs.properties versions
+	filesMatching('fabric.mod.json') {
+		expand versions
+	}
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.release = 25
+}
