@@ -10,6 +10,7 @@
   },
   "depends": {
     "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
     "minecraft": "${minecraft_version}",
     "java": ">=25",
     "infs-farlands": "=${farlands_version}"

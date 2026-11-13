@@ -15,6 +15,8 @@ repositories {
 dependencies {
 	minecraft "com.mojang:minecraft:${minecraft_version}"
 	implementation "net.fabricmc:fabric-loader:${loader_version}"
+	compileOnly "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+	localRuntime "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 	implementation "com.inf.farlands:infs-farlands:${farlands_version}"
 }
 
@@ -28,6 +30,10 @@ processResources {
 	inputs.properties versions
 	filesMatching('fabric.mod.json') {
 		expand versions
+	}
+	// 与派生代码同目录的来源说明与许可证按同一相对路径进 jar。
+	from('src/main/java') {
+		include '**/*.md'
 	}
 }
 
