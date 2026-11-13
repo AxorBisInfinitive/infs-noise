@@ -27,16 +27,16 @@ public final class FlowNoise {
     /**
      * 统一管理噪声的数学参数。
      *
-     * @param frequencyX      X 轴频率（允许为 0）
-     * @param frequencyY      Y 轴频率（允许为 0，适合二维噪声）
-     * @param frequencyZ      Z 轴频率（允许为 0）
+     * @param frequencyX      X 轴频率
+     * @param frequencyY      Y 轴频率
+     * @param frequencyZ      Z 轴频率
      * @param octaves         八度数
      * @param seed            32 位噪声种子
      * @param foldCoordinates 是否按 Flow Noise 的规则折叠坐标
-     * @param persistence     每阶振幅乘数（CWG 为 0.5）
-     * @param lacunarity      每阶频率乘数（CWG 为 2.0）
-     * @param gradientScale   梯度点积的乘数（CWG 为 1.0）
-     * @param gradientOffset  梯度点积的偏移（CWG 为 0.5）
+     * @param persistence     每阶振幅乘数
+     * @param lacunarity      每阶频率乘数
+     * @param gradientScale   梯度点积的乘数
+     * @param gradientOffset  梯度点积的偏移
      */
     public record Parameters(double frequencyX, double frequencyY, double frequencyZ,
             int octaves, int seed, boolean foldCoordinates,
@@ -81,7 +81,7 @@ public final class FlowNoise {
         return value;
     }
 
-    /** 八度振幅几何级数之和；保持 CWG 使用的闭式求值顺序。 */
+    /** 八度振幅几何级数之和；保持闭式求值顺序。 */
     public static double maxValue(int octaves, double persistence) {
         if (persistence == 1.0) {
             return octaves;
