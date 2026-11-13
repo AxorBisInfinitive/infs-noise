@@ -138,7 +138,7 @@ public final class FlowNoise {
         double value = this.gradients[index * 4] * (fx - ix)
                 + this.gradients[index * 4 + 1] * (fy - iy)
                 + this.gradients[index * 4 + 2] * (fz - iz);
-        // scale=1 时不增加运算，避免改变 CWG 原有舍入路径。
+        // scale=1 时不增加运算，避免改变原有舍入路径。
         if (this.parameters.gradientScale() != 1.0) {
             value *= this.parameters.gradientScale();
         }
