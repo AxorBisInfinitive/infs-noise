@@ -1,13 +1,14 @@
 package com.inf.noise.system.noise.overworld.Cwg.simulation;
 
-import com.inf.farlands.simulation.int64.noise.Density;
-import com.inf.farlands.simulation.int64.noise.InterpolatedDensity;
+import com.inf.farlands.simulation.int1024.noise.Density;
+import com.inf.farlands.simulation.int1024.noise.InterpolatedDensity;
+import com.inf.long2.ints.Int1024;
 import com.inf.noise.system.noise.overworld.Cwg.CwgDensity;
 import com.inf.noise.system.noise.overworld.Cwg.CwgNoise;
 
 /**
  * 模拟 CWG 密度链：复用 CwgNoise 与 CwgDensity.Ops，
- * 使用 long 方块坐标、常量高度与波动系数输入。
+ * 使用 1024 位方块坐标、常量高度与波动系数输入。
  * 算子顺序与原模拟实现保持一致。
  */
 public final class CwgSimulationDensity implements InterpolatedDensity {
@@ -31,10 +32,10 @@ public final class CwgSimulationDensity implements InterpolatedDensity {
     }
 
     @Override
-    public double compute(long x, long y, long z) {
-        double dx = (double) x;
-        double dy = (double) y;
-        double dz = (double) z;
+    public double compute(Int1024 x, Int1024 y, Int1024 z) {
+        double dx = x.toDouble();
+        double dy = y.toDouble();
+        double dz = z.toDouble();
 
         double selectorValue = this.selector.normalized(dx, dy, dz) * this.ops.selectorFactor()
                 + this.ops.selectorOffset();

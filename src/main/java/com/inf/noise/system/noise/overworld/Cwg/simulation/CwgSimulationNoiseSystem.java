@@ -3,19 +3,20 @@ package com.inf.noise.system.noise.overworld.Cwg.simulation;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.inf.farlands.simulation.int64.SimulationNoiseSystem;
-import com.inf.farlands.simulation.int64.noise.Aquifer;
-import com.inf.farlands.simulation.int64.noise.Density;
-import com.inf.farlands.simulation.int64.noise.FluidPicker;
-import com.inf.farlands.simulation.int64.noise.FluidStatus;
-import com.inf.farlands.simulation.int64.noise.Random;
-import com.inf.farlands.simulation.int64.noise.Router;
-import com.inf.farlands.simulation.int64.noise.Settings;
+import com.inf.farlands.simulation.int1024.SimulationNoiseSystem;
+import com.inf.farlands.simulation.int1024.noise.Aquifer;
+import com.inf.farlands.simulation.int1024.noise.Density;
+import com.inf.farlands.simulation.int1024.noise.FluidPicker;
+import com.inf.farlands.simulation.int1024.noise.FluidStatus;
+import com.inf.farlands.simulation.int1024.noise.Random;
+import com.inf.farlands.simulation.int1024.noise.Router;
+import com.inf.farlands.simulation.int1024.noise.Settings;
 import com.inf.farlands.terrain.registry.SystemArgs;
 import com.inf.farlands.terrain.registry.SystemDefaultParams;
 import com.inf.farlands.terrain.registry.SystemParamSpec;
 import com.inf.farlands.terrain.registry.SystemParams;
 import com.inf.farlands.terrain.registry.SystemsData.Arg;
+import com.inf.long2.ints.Int1024;
 import com.inf.noise.system.noise.overworld.Cwg.CwgDensity;
 import com.inf.noise.system.noise.overworld.Cwg.CwgNoise;
 
@@ -33,7 +34,7 @@ import net.minecraft.world.level.block.state.BlockState;
  * 关掉折叠后坐标被折回 int32 范围，饱和不发生，退化成普通重复噪声。
  *
  * <p>
- * 与普通 CWG 共用噪声和密度参数，通过独立的 CwgSimulationDensity 接入 long 坐标。height 与 volatility 由常量给，因为模拟层没有
+ * 与普通 CWG 共用噪声和密度参数，通过独立的 CwgSimulationDensity 接入 1024 位坐标。height 与 volatility 由常量给，因为模拟层没有
  * 与地形层同源的 continents、erosion、ridges 样条；液体与含水层两侧都恒空气。
  *
  * <p>
@@ -222,17 +223,17 @@ public final class CwgSimulationNoiseSystem implements SimulationNoiseSystem {
     /** 液面取 MIN_VALUE 恒出空气。否则密度非正的留空半边会被默认 picker 填成水或岩浆。 */
     @Override
     public FluidPicker createFluidPicker(Settings settings) {
-        return (x, y, z) -> new FluidStatus(Long.MIN_VALUE, Blocks.AIR.defaultBlockState());
+        return (x, y, z) -> new FluidStatus(Int1024.MIN_VALUE, Blocks.AIR.defaultBlockState());
     }
 
     /** 密度为正交给默认方块，非正接管成空气。与 picker 同义，省掉含水层的网格取样。 */
     @Override
-    public Aquifer createAquifer(Settings settings, long sectionX, long sectionY, long sectionZ, Router router,
-            Random random, FluidPicker picker) {
+    public Aquifer createAquifer(Settings settings, Int1024 sectionX, Int1024 sectionY, Int1024 sectionZ,
+            Router router, Random random, FluidPicker picker) {
         return new Aquifer() {
 
             @Override
-            public BlockState computeSubstance(long x, long y, long z, double density) {
+            public BlockState computeSubstance(Int1024 x, Int1024 y, Int1024 z, double density) {
                 return density > 0.0 ? null : Blocks.AIR.defaultBlockState();
             }
 
