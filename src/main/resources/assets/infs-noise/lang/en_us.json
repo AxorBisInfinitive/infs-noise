@@ -1,4 +1,5 @@
 {
-  "createWorld.tab.infs-farlands.system.infs-noise.overworld_cwg_noise_system": "CubicWorldGen",
-  "createWorld.tab.infs-farlands.system.infs-noise.simulation_sine_noise_system": "Sine Wave"
+    "createWorld.tab.infs-farlands.system.infs-noise.overworld_cwg_noise_system": "CubicWorldGen",
+    "createWorld.tab.infs-farlands.system.infs-noise.simulation_cwg_noise_system": "CubicWorldGen",
+    "createWorld.tab.infs-farlands.system.infs-noise.simulation_sine_noise_system": "Sine Wave"
 }
