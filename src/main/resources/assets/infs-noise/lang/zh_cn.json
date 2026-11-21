@@ -1,5 +1,6 @@
 {
     "createWorld.tab.infs-farlands.system.infs-noise.overworld_cwg_noise_system": "CubicWorldGen",
     "createWorld.tab.infs-farlands.system.infs-noise.simulation_cwg_noise_system": "CubicWorldGen",
-    "createWorld.tab.infs-farlands.system.infs-noise.simulation_sine_noise_system": "正弦波"
+    "createWorld.tab.infs-farlands.system.infs-noise.simulation_sine_noise_system": "正弦波",
+    "createWorld.tab.infs-farlands.system.infs-noise.simulation_sierpinski_pyramid_block_system": "谢尔宾斯基四棱锥"
 }

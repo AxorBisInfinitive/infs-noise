@@ -3,6 +3,7 @@ package com.inf.noise;
 import com.inf.farlands.simulation.registry.SimulationRegistries;
 import com.inf.farlands.terrain.registry.FarlandsSystems;
 import com.inf.farlands.terrain.registry.SystemId;
+import com.inf.noise.system.block.misc.Sierpinski.SierpinskiPyramidSimulationBlockSystem;
 import com.inf.noise.system.noise.overworld.Cwg.CwgNoiseSystem;
 import com.inf.noise.system.noise.overworld.Cwg.simulation.CwgSimulationNoiseSystem;
 import com.inf.noise.system.noise.overworld.Sine.SineSimulationNoiseSystem;
@@ -28,6 +29,10 @@ public final class InfsNoise implements ModInitializer {
                 new SystemId(
                         id("simulation_sine_noise_system")),
                 SineSimulationNoiseSystem.class);
+        SimulationRegistries.register(
+                new SystemId(
+                        id("simulation_sierpinski_pyramid_block_system")),
+                SierpinskiPyramidSimulationBlockSystem.class);
     }
 
     public static Identifier id(String value) {
