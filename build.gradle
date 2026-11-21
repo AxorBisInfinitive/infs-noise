@@ -10,6 +10,7 @@ repositories {
 			includeModule 'com.inf.farlands', 'infs-farlands'
 		}
 	}
+	mavenCentral()
 }
 
 dependencies {
@@ -17,9 +18,9 @@ dependencies {
 	implementation "net.fabricmc:fabric-loader:${loader_version}"
 	compileOnly "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 	localRuntime "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
-	// 临时：指向本仓库刚构建的产物与本机缓存的 Long2，用来验证新接口。验证完把这两行改回下面那行 maven 坐标。
+	// 临时：指向本仓库刚构建的产物，用来验证新接口。验证完把这一行改回下面那行 maven 坐标。
 	implementation fileTree(dir: '../../build/libs', include: ['infs-farlands-*.jar'], exclude: ['*-sources.jar'])
-	implementation files("${gradle.gradleUserHomeDir}/caches/modules-2/files-2.1/com.inf.long2/Long2/0.2.1/8b95036d4b698c8d69293eeb9789b62bc1b88523/Long2-0.2.1.jar")
+	implementation "love.crysh.long2:Long2:0.2.2"
 	// implementation "com.inf.farlands:infs-farlands:${farlands_version}"
 }
 

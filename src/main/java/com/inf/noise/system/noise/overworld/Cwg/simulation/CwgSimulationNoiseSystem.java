@@ -16,7 +16,7 @@ import com.inf.farlands.terrain.registry.SystemDefaultParams;
 import com.inf.farlands.terrain.registry.SystemParamSpec;
 import com.inf.farlands.terrain.registry.SystemParams;
 import com.inf.farlands.terrain.registry.SystemsData.Arg;
-import com.inf.long2.ints.Int1024;
+import love.crysh.long2.ints.Int1024;
 import com.inf.noise.system.noise.overworld.Cwg.CwgDensity;
 import com.inf.noise.system.noise.overworld.Cwg.CwgNoise;
 

@@ -1,7 +1,7 @@
 package com.inf.noise.system.noise.overworld.Sine;
 
 import com.inf.farlands.simulation.int1024.noise.Density;
-import com.inf.long2.ints.Int1024;
+import love.crysh.long2.ints.Int1024;
 
 /**
  * 测试用的正弦密度：地面高度由两条正弦叠加给出，密度取「地面高度减方块 Y」。
